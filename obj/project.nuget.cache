@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "GYlChKlQUntcqtatC49v8VUhmsLBS34AiWzfxLCVcc9/uPP9/adi59t8fT/HUeA1bU0ytmGiLHJxgBL9wg8SUg==",
+  "success": true,
+  "projectFilePath": "/Users/louai.aijabi/Desktop/Study/Fall2024/IMM225/VisualQuery_Prototype/VisualQuery_Prototype/VisualQuery_Prototype.csproj",
+  "expectedPackageFiles": [
+    "/Users/louai.aijabi/.nuget/packages/raylib-cs/6.1.1/raylib-cs.6.1.1.nupkg.sha512",
+    "/Users/louai.aijabi/.nuget/packages/system.numerics.vectors/4.5.0/system.numerics.vectors.4.5.0.nupkg.sha512"
+  ],
+  "logs": []
+}
