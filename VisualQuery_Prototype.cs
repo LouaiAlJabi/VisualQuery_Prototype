@@ -14,10 +14,7 @@ namespace VisualQuery_Prototype
             Raylib.InitWindow(800, 600, "VisualQuery");
             Raylib.SetTargetFPS(60);
 
-
             // MAKE A TABLE AND PARSE IT
-
-            // make a list to act as a "table data" with shitty names and shit
             List<List<string>> dataTable = new List<List<string>>()
             {
                 new List<string> { "ID", "Name", "Value" },
@@ -44,12 +41,9 @@ namespace VisualQuery_Prototype
                 }
             }
 
-
             // MAKE A TEXTBOX AND HANDLE IT
-
             string query = "";
-            bool showCursor = true;
-
+            bool showCursor = true; // wanna see the mouse around
             while (!Raylib.WindowShouldClose())
             {
                 
@@ -63,10 +57,7 @@ namespace VisualQuery_Prototype
                             command.CommandText = query;
                             using (var reader = command.ExecuteReader())
                             {
-                                
                                 dataTable.Clear();
-
-                              
                                 var headers = new List<string>();
                                 for (int i = 0; i < reader.FieldCount; i++)
                                 {
@@ -74,7 +65,6 @@ namespace VisualQuery_Prototype
                                 }
                                 dataTable.Add(headers);
 
-                                
                                 while (reader.Read())
                                 {
                                     var row = new List<string>();
@@ -107,7 +97,7 @@ namespace VisualQuery_Prototype
                     if (key > 0 && key < 128) // all ASCII printable characters, no special characters, didn't know how to do it
                     {
                         char c = (char)key;
-                        if (char.IsLetterOrDigit(c) || c == '_' || c == ' ' || c == ';')
+                        if (char.IsLetterOrDigit(c) || c == '_' || c == ' ' || c == ';' || c == '*')
                         {
                             query += c;
                         }
@@ -143,12 +133,11 @@ namespace VisualQuery_Prototype
 
                 Raylib.EndDrawing();
             }
-
         
             Raylib.CloseWindow();
         }
 
-        static System.Data.DataTable ConvertToDataTable(List<List<string>> data)
+        static System.Data.DataTable ConvertToDataTable(List<List<string>> data) // make the table
         {
             var table = new System.Data.DataTable();
 
@@ -159,7 +148,6 @@ namespace VisualQuery_Prototype
                     table.Columns.Add(column);
                 }
 
-                
                 for (int i = 1; i < data.Count; i++)
                 {
                     table.Rows.Add(data[i].ToArray());
