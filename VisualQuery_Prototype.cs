@@ -63,18 +63,18 @@ namespace VisualQuery_Prototype
                             command.CommandText = query;
                             using (var reader = command.ExecuteReader())
                             {
-                                // Clear the existing data
+                                
                                 dataTable.Clear();
 
-                                // Dynamically add headers (column names)
+                              
                                 var headers = new List<string>();
                                 for (int i = 0; i < reader.FieldCount; i++)
                                 {
-                                    headers.Add(reader.GetName(i)); // Get column name dynamically
+                                    headers.Add(reader.GetName(i)); 
                                 }
-                                dataTable.Add(headers); // Add headers as the first row
+                                dataTable.Add(headers);
 
-                                // Add the rest of the rows
+                                
                                 while (reader.Read())
                                 {
                                     var row = new List<string>();
@@ -104,7 +104,7 @@ namespace VisualQuery_Prototype
                 else
                 {
                     int key = Raylib.GetKeyPressed();
-                    if (key > 0 && key < 128) // ASCII printable characters
+                    if (key > 0 && key < 128) // all ASCII printable characters, no special characters, didn't know how to do it
                     {
                         char c = (char)key;
                         if (char.IsLetterOrDigit(c) || c == '_' || c == ' ' || c == ';')
@@ -136,14 +136,14 @@ namespace VisualQuery_Prototype
                 }
 
                 // Draw text box
-                Raylib.DrawRectangle(50, Raylib.GetScreenHeight() - 50, 700, 40, Color.LightGray);
-                Raylib.DrawText("Enter SQL Query:", 60, Raylib.GetScreenHeight() - 45, 20, Color.Black);
+                Raylib.DrawRectangle(50, Raylib.GetScreenHeight() - 70, 700, 350, Color.LightGray);
+                Raylib.DrawText("Enter SQL Query:", 60, Raylib.GetScreenHeight() - 65, 20, Color.Black);
                 Raylib.DrawText(query, 60, Raylib.GetScreenHeight() - 30, 20, Color.Black);
 
                 Raylib.EndDrawing();
             }
 
-            // Close Raylib
+        
             Raylib.CloseWindow();
         }
 
@@ -153,13 +153,13 @@ namespace VisualQuery_Prototype
 
             if (data.Count > 0)
             {
-                // Create columns
+                
                 foreach (var column in data[0])
                 {
                     table.Columns.Add(column);
                 }
 
-                // Add rows
+                
                 for (int i = 1; i < data.Count; i++)
                 {
                     table.Rows.Add(data[i].ToArray());
