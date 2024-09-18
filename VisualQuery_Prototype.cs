@@ -123,6 +123,7 @@ namespace VisualQuery_Prototype
                 int startY = 50;
                 int cellWidth = 100;
                 int cellHeight = 30;
+                Raylib.DrawText("Table Name: Data", 20, 20, 20, Color.Black);
                 foreach (var row in dataTable)
                 {
                     int x = startX;
@@ -136,7 +137,7 @@ namespace VisualQuery_Prototype
                 }
 
                 // Draw text box
-                Raylib.DrawRectangle(50, Raylib.GetScreenHeight() - 70, 700, 350, Color.LightGray);
+                Raylib.DrawRectangle(50, Raylib.GetScreenHeight() - 70, 700, 65, Color.LightGray);
                 Raylib.DrawText("Enter SQL Query:", 60, Raylib.GetScreenHeight() - 65, 20, Color.Black);
                 Raylib.DrawText(query, 60, Raylib.GetScreenHeight() - 30, 20, Color.Black);
 
@@ -153,7 +154,6 @@ namespace VisualQuery_Prototype
 
             if (data.Count > 0)
             {
-                
                 foreach (var column in data[0])
                 {
                     table.Columns.Add(column);
@@ -165,7 +165,6 @@ namespace VisualQuery_Prototype
                     table.Rows.Add(data[i].ToArray());
                 }
             }
-
             return table;
         }
     }
